@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: organization-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: organization-app
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  minReadySeconds: 5
+  template:
+    metadata:
+      labels:
+        app: organization-app
+    spec:
+      containers:
+      - name: organization-app
+        image: docker.io/vcosqui/organization-app:1.0-29
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: 100m
+          limits:
+            cpu: 100m
+
