@@ -9,7 +9,7 @@ env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: organization-cluster
   GKE_ZONE: us-central1-a
-  DEPLOYMENT_NAME: organization-deployment
+  DEPLOYMENT_NAME: organization-app
 
 jobs:
   deploy:
