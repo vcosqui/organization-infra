@@ -4,7 +4,7 @@ networks:
     driver: bridge
 services:
   organization-service:
-    image: docker.io/library/organization-app:latest
+    image: docker.io/vcosqui/organization-app:1.0-29
     deploy:
       replicas: 2
     networks:
