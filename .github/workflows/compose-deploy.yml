@@ -8,4 +8,6 @@ jobs:
       - name: Build the stack
         run: docker-compose up -d
       - name: Smoke Test
-        run: timeout 30 bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://user:password@localhost:8080/organization)" != "200" ]]; do sleep 5; done' || false
+        #run: timeout 30 bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://user:password@localhost:8080/organization)" != "200" ]]; do sleep 5; done' || false
+        run: docker run --network container:ngnix-server appropriate/curl --retry 10 --retry-connrefused http://user:password@localhost:8080/organization
+         
