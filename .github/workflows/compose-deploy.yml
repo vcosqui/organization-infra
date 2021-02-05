@@ -8,4 +8,4 @@ jobs:
       - name: Build the stack
         run: docker-compose up -d
       - name: Smoke Test
-        run: curl -v --retry-all-errors --retry 5 --retry-max-time 30 http://user:password@localhost:8080/organization
+        run: timeout 30 bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' http://user:password@localhost:8080/organization)" != "200" ]]; do sleep 5; done' || false
