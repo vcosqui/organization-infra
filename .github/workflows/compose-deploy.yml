@@ -8,4 +8,4 @@ jobs:
       - name: Build the stack
         run: docker-compose up -d
       - name: Smoke Test
-        run: curl http://localhost:8080/
+        run: curl -sSv http://localhost:8080/organization
