@@ -8,4 +8,4 @@ jobs:
       - name: Build the stack
         run: docker-compose up -d
       - name: Smoke Test
-        run: sleep 5s && curl -sSv http://localhost:8080/organization
+        run: curl -v --retry-all-errors --retry 5 --retry-max-time 30 http://user:password@localhost:8080/organization
